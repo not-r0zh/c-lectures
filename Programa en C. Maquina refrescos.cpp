@@ -34,20 +34,37 @@ main()
 	float devolver_total;
 	printf("Introduce cuanto hay que devolver\n");
 	scanf("%f",&devolver_total);
+	devolver_total = devolver_total*100;
+	int cambio = (int)devolver_total;
+	printf("%d\n",cambio);
 	int mon50 = 0, mon20 = 0, mon10 = 0, mon5 = 0;
-	for(devolver_total;devolver_total%5==0;devolver_total-5){
-		for(devolver_total;devolver_total%10==0;devolver_total-10){
-			for(devolver_total;devolver_total%20==0;devolver_total-20){
-				for(devolver_total;devolver_total%50==0;devolver_total-50){
-					mon50 += 1;
-				}
-				mon20 += 1;
-			}
-			mon10 += 1;
+	
+	if(cambio%5==0 and cambio>=0){
+	
+		while(cambio>=50){
+			cambio=cambio-50;
+			mon50++;
 		}
-		mon5 += 1;
+	
+		while(cambio>=20){
+			cambio=cambio-20;
+			mon20++;
+		}
+	
+		while(cambio>=10){
+			cambio=cambio-10;
+			mon10++;
+		}
+	
+		while(cambio>=5){
+			cambio=cambio-5;
+			mon5++;
+		}
 	}
-	printf("Se necesitan %d monedas de 50 cent, %d monedas de 20 cent, %d monedas de 10 cent y %d monedas de 5 cent\n");
+	else{
+		printf("Me tiene que da un numero divisible por 5 tonto culo");
+	}
+	printf("Se necesitan %d monedas de 50 cent, %d monedas de 20 cent, %d monedas de 10 cent y %d monedas de 5 cent\n",mon50,mon20,mon10,mon5);
 	
 	system("pause");
 }
